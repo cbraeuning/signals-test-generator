@@ -1,6 +1,7 @@
 function generateTest(){
 	var imageTabsDiv = document.getElementById('imageTabs');
 	if(imageTabsDiv !== null) imageTabsDiv.parentNode.removeChild(imageTabsDiv);
+	var test = [];
 
 	var seasons = ["fall","spring"];
 	var years = [16,17];
@@ -8,7 +9,6 @@ function generateTest(){
 	var perms = cartesianProduct([seasons,years,questions]);
 	randomPerms = shuffle(perms);
 	var qNum = 0;
-	console.log(randomPerms);
 
 	var imageTabsDiv = document.createElement('div');
     imageTabsDiv.setAttribute('id', 'imageTabs');
@@ -21,7 +21,7 @@ function generateTest(){
       var img = document.createElement("img");
       img.src =  (baseURL + "T1-"+season+year+'/'+question+".png");
       img.setAttribute("width","80%");
-      imageTabsDiv.appendChild(img);
+      test.push(img);
       qNum++;
 	}
 	for (var i = 0; i < 3; i++) {
@@ -31,7 +31,7 @@ function generateTest(){
       var img = document.createElement("img");
       img.src =  (baseURL + "T2-"+season+year+'/'+question+".png");
       img.setAttribute("width","80%");
-      imageTabsDiv.appendChild(img);
+      test.push(img);
       qNum++;
 	}
 	for (var i = 0; i < 4; i++) {
@@ -41,7 +41,7 @@ function generateTest(){
       var img = document.createElement("img");
       img.src =  (baseURL + "T3-"+season+year+'/'+question+".png");
       img.setAttribute("width","80%");
-      imageTabsDiv.appendChild(img);
+      test.push(img);
       qNum++;
 	}
 	for (var i = 0; i < 4; i++) {
@@ -51,7 +51,7 @@ function generateTest(){
       var img = document.createElement("img");
       img.src =  (baseURL + "T4-"+season+year+'/'+question+".png");
       img.setAttribute("width","80%");
-      imageTabsDiv.appendChild(img);
+      test.push(img);
       qNum++;
 	}
 	for (var i = 0; i < 3; i++) {
@@ -61,7 +61,7 @@ function generateTest(){
       var img = document.createElement("img");
       img.src =  (baseURL + "T5-"+season+year+'/'+question+".png");
       img.setAttribute("width","80%");
-      imageTabsDiv.appendChild(img);
+      test.push(img);
       qNum++;
 	}
 	for (var i = 0; i < 3; i++) {
@@ -71,9 +71,13 @@ function generateTest(){
       var img = document.createElement("img");
       img.src =  (baseURL + "T6-"+season+year+'/'+question+".png");
       img.setAttribute("width","80%");
-      imageTabsDiv.appendChild(img);
+      test.push(img);
       qNum++;
 	}
+	for(var x=0; x<test.length; x++){ 
+		imageTabsDiv.appendChild(test[x]);
+	}
+
 	document.getElementById("testPlaceholder").appendChild(imageTabsDiv);
 }
 
