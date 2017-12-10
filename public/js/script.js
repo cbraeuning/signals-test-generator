@@ -25,10 +25,12 @@ function generateTest(){
       var img = document.createElement("img");
       img.classList.add("qImg");
      
-      var source = document.createElement("p");
+      var source = document.createElement("a");
+      source.innerText = "Test " + t + ':'+season+year+'- question '+question;
+      source.setAttribute("target","_blank");
+      source.setAttribute("href","tests/T"+t+"-3300"+season+year+"ans.pdf");
       source.classList.add("source");
       source.classList.add("sourceHide");
-      source.innerText = "Test " + t + ':'+season+year+'- question '+question;
       img.src =  (baseURL + "T" + t + '-' +season+year+'/'+question + ".png");
       q.appendChild(img);
       q.appendChild(source);
