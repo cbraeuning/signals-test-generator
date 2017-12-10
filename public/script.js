@@ -7,7 +7,8 @@ function generateTest(){
 	var years = [16,17];
 	var questions = [1,2,3,4,5,6,7,8,9,10,11,12];
 	var perms = cartesianProduct([seasons,years,questions]);
-	randomPerms = shuffle(perms);
+	var randomPerms = shuffle(perms);
+	console.log(randomPerms);
 	var qNum = 0;
 
 	var imageTabsDiv = document.createElement('div');
@@ -19,8 +20,8 @@ function generateTest(){
       year = randomPerms[qNum][1];
       question = randomPerms[qNum][2];
       var img = document.createElement("img");
+      img.classList.add("question");
       img.src =  (baseURL + "T1-"+season+year+'/'+question+".png");
-      img.setAttribute("width","80%");
       test.push(img);
       qNum++;
 	}
@@ -29,8 +30,8 @@ function generateTest(){
       year = randomPerms[qNum][1];
       question = randomPerms[qNum][2];
       var img = document.createElement("img");
+      img.classList.add("question");
       img.src =  (baseURL + "T2-"+season+year+'/'+question+".png");
-      img.setAttribute("width","80%");
       test.push(img);
       qNum++;
 	}
@@ -39,8 +40,8 @@ function generateTest(){
       year = randomPerms[qNum][1];
       question = randomPerms[qNum][2];
       var img = document.createElement("img");
+      img.classList.add("question");
       img.src =  (baseURL + "T3-"+season+year+'/'+question+".png");
-      img.setAttribute("width","80%");
       test.push(img);
       qNum++;
 	}
@@ -49,8 +50,8 @@ function generateTest(){
       year = randomPerms[qNum][1];
       question = randomPerms[qNum][2];
       var img = document.createElement("img");
+      img.classList.add("question");
       img.src =  (baseURL + "T4-"+season+year+'/'+question+".png");
-      img.setAttribute("width","80%");
       test.push(img);
       qNum++;
 	}
@@ -59,8 +60,8 @@ function generateTest(){
       year = randomPerms[qNum][1];
       question = randomPerms[qNum][2];
       var img = document.createElement("img");
+      img.classList.add("question");
       img.src =  (baseURL + "T5-"+season+year+'/'+question+".png");
-      img.setAttribute("width","80%");
       test.push(img);
       qNum++;
 	}
@@ -69,13 +70,15 @@ function generateTest(){
       year = randomPerms[qNum][1];
       question = randomPerms[qNum][2];
       var img = document.createElement("img");
+      img.classList.add("question");
       img.src =  (baseURL + "T6-"+season+year+'/'+question+".png");
-      img.setAttribute("width","80%");
       test.push(img);
       qNum++;
 	}
-	for(var x=0; x<test.length; x++){ 
-		imageTabsDiv.appendChild(test[x]);
+
+	var randomTest = shuffle(test);
+	for(var x=0; x<randomTest.length; x++){ 
+		imageTabsDiv.appendChild(randomTest[x]);
 	}
 
 	document.getElementById("testPlaceholder").appendChild(imageTabsDiv);
