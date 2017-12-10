@@ -2,6 +2,7 @@ function generateTest(){
   var imageTabsDiv = document.getElementById('imageTabs');
   if(imageTabsDiv !== null) imageTabsDiv.parentNode.removeChild(imageTabsDiv);
   var test = [];
+  var qPerTest = [3,3,4,4,3,3];
 
   var seasons = ["fall","spring"];
   var years = [16,17];
@@ -14,65 +15,27 @@ function generateTest(){
     imageTabsDiv.setAttribute('id', 'imageTabs');
     baseURL = "questions/";
 
-    for (var i = 0; i < 3; i++) {
+  for(var t=1; t<=6; t++){  
+    for (var i = 1; i <= qPerTest[t]; i++) {
       season = randomPerms[qNum][0];
       year = randomPerms[qNum][1];
       question = randomPerms[qNum][2];
+      var q = document.createElement("div");
+      q.classList.add("question");
       var img = document.createElement("img");
-      img.classList.add("question");
-      img.src =  (baseURL + "T1-"+season+year+'/'+question+".png");
-      test.push(img);
+      img.classList.add("qImg");
+     
+      var source = document.createElement("p");
+      source.classList.add("source");
+      source.classList.add("sourceHide");
+      source.innerText = "Test " + t + ':'+season+year+'- question '+question;
+      img.src =  (baseURL + "T" + t + '-' +season+year+'/'+question + ".png");
+      q.appendChild(img);
+      q.appendChild(source);
+
+      test.push(q);
       qNum++;
-  }
-  for (var i = 0; i < 3; i++) {
-      season = randomPerms[qNum][0];
-      year = randomPerms[qNum][1];
-      question = randomPerms[qNum][2];
-      var img = document.createElement("img");
-      img.classList.add("question");
-      img.src =  (baseURL + "T2-"+season+year+'/'+question+".png");
-      test.push(img);
-      qNum++;
-  }
-  for (var i = 0; i < 4; i++) {
-      season = randomPerms[qNum][0];
-      year = randomPerms[qNum][1];
-      question = randomPerms[qNum][2];
-      var img = document.createElement("img");
-      img.classList.add("question");
-      img.src =  (baseURL + "T3-"+season+year+'/'+question+".png");
-      test.push(img);
-      qNum++;
-  }
-  for (var i = 0; i < 4; i++) {
-      season = randomPerms[qNum][0];
-      year = randomPerms[qNum][1];
-      question = randomPerms[qNum][2];
-      var img = document.createElement("img");
-      img.classList.add("question");
-      img.src =  (baseURL + "T4-"+season+year+'/'+question+".png");
-      test.push(img);
-      qNum++;
-  }
-  for (var i = 0; i < 3; i++) {
-      season = randomPerms[qNum][0];
-      year = randomPerms[qNum][1];
-      question = randomPerms[qNum][2];
-      var img = document.createElement("img");
-      img.classList.add("question");
-      img.src =  (baseURL + "T5-"+season+year+'/'+question+".png");
-      test.push(img);
-      qNum++;
-  }
-  for (var i = 0; i < 3; i++) {
-      season = randomPerms[qNum][0];
-      year = randomPerms[qNum][1];
-      question = randomPerms[qNum][2];
-      var img = document.createElement("img");
-      img.classList.add("question");
-      img.src =  (baseURL + "T6-"+season+year+'/'+question+".png");
-      test.push(img);
-      qNum++;
+    }
   }
 
   var randomTest = shuffle(test);
@@ -82,6 +45,16 @@ function generateTest(){
 
   document.getElementById("testPlaceholder").appendChild(imageTabsDiv);
   stopwatch.start()
+}
+
+function toggleSource(){
+  if(document.getElementById("sourceButton").innerText == "Show Source"){
+    sources = document.getElementsByClassName("source");
+    for (var i = sources.length - 1; i >= 0; i--) {
+      sources[i].classList.remove("sourceHide");
+      sources[i].classList.add("sourceShow");
+    }
+  }
 }
 
 function shuffle(array) {

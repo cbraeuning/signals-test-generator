@@ -1,9 +1,25 @@
 .question {
-  width: 80%;
   height: 100%;
   float: left;
   margin: 30px 80px;
   align: middle;
+}
+
+.qImg {
+	width: 80%;
+}
+
+.sourceHide {
+	display: none;
+}
+
+.sourceShow {
+	display: block;
+}
+
+.sourceToggle {
+	display: block;
+	margin: 10px 80px;
 }
 
 .stopwatch {
